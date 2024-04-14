@@ -1,14 +1,4 @@
-// SPDX-License-Identifier: MIT
-// This is the first change
-/ This is the second change
-// this is the third change
-// this is third changes in mergeing
-// fourth change
-// fifth chang
-pragma solidity ^0.8.0;
-// updating this file and generating report
-// this is WETH contract file, use carefully
-// This is a wtch.sol file
+// this file is a WETH.sol file
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract WETH is ERC20 {aa

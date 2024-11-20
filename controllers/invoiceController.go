@@ -17,11 +17,14 @@ import (
 )
 
 type InvoiceViewFormat struct {
-	Invoice_id       string
-	Payment_method   string
-	Order_id         string
-	Payment_status   *string
-	Payment_due      interface{}
+type YourStructName struct {
+PaymentMethod   string
+OrderID string
+	PaymentStatus   *string
+	PaymentDue      interface{}
+TableNumber     interface{}
+PaymentDueDate time.Time
+OrderDetails interface{}
 	Table_number     interface{}
 	Payment_due_date time.Time
 	Order_details    interface{}
@@ -47,7 +50,7 @@ func GetInvoices() gin.HandlerFunc {
 	}
 }
 
-func GetInvoice() gin.HandlerFunc {
+invoiceID := c.Param("invoice_id")
 	return func(c *gin.Context) {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 		invoiceId := c.Param("invoice_id")
@@ -131,7 +134,7 @@ func CreateInvoice() gin.HandlerFunc {
 
 func UpdateInvoice() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+		invoiceID := c.Param("invoice_id")
 
 		var invoice models.Invoice
 		invoiceId := c.Param("invoice_id")

@@ -67,7 +67,7 @@ func GetFoods() gin.HandlerFunc {
 func GetFood() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
-		foodId := c.Param("food_id")
+		foodID := c.Param("food_id")
 		var food models.Food
 
 		err := foodCollection.FindOne(ctx, bson.M{"food_id": foodId}).Decode(&food)
@@ -135,7 +135,7 @@ func UpdateFood() gin.HandlerFunc {
 		var menu models.Menu
 		var food models.Food
 
-		foodId := c.Param("food_id")
+		foodID := c.Param("food_id")
 
 		if err := c.BindJSON(&food); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

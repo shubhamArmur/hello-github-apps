@@ -22,6 +22,10 @@ import (
 var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
 var validate = validator.New()
 
+// GetFoods returns a handler function that processes food-related requests.
+func GetFoods() gin.HandlerFunc {
+    // Function implementation here
+}
 func GetFoods() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -60,6 +64,10 @@ func GetFoods() gin.HandlerFunc {
 		if err = result.All(ctx, &allFoods); err != nil {
 			log.Fatal(err)
 		}
+// GetFood handles the request for retrieving food details.
+func GetFood() gin.HandlerFunc {
+    // Function implementation
+}
 		c.JSON(http.StatusOK, allFoods[0])
 	}
 }
@@ -71,6 +79,11 @@ func GetFood() gin.HandlerFunc {
 		var food models.Food
 
 		err := foodCollection.FindOne(ctx, bson.M{"food_id": foodId}).Decode(&food)
+// CreateFood handles the creation of new food items.
+// It is an HTTP handler function.
+func CreateFood() gin.HandlerFunc {
+    // your code implementation
+}
 		defer cancel()
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while fetching the food item"})
@@ -116,6 +129,11 @@ func CreateFood() gin.HandlerFunc {
 			return
 		}
 		defer cancel()
+// UpdateFood handles the update of food items in the database.
+// It takes in food item details from the request and updates the record.
+func UpdateFood() gin.HandlerFunc {
+   // function implementation
+}
 		c.JSON(http.StatusOK, result)
 	}
 }
